@@ -1,0 +1,2 @@
+# REACT FLOW CREATOR
+this is experiment for react ui creator by just define the flow on redux saga and control everything over there.This project is use lerna to control the version and deps easlier, to run the project please check on lerna official repo.
