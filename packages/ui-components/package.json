@@ -61,6 +61,7 @@
     "dist"
   ],
   "dependencies": {
-    "antd": "^4.16.11"
+    "antd": "^4.16.11",
+    "react-redux": "^7.2.4"
   }
 }

@@ -23,5 +23,8 @@
   },
   "bugs": {
     "url": "https://github.com/Drnutsu/react-flow-creator/issues"
+  },
+  "dependencies": {
+    "react-redux": "^7.2.4"
   }
 }
