@@ -1,12 +1,12 @@
 {
   "name": "react-flow-core",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "> TODO: description",
   "author": "Nutsu <dentistnut@gmail.com>",
   "homepage": "https://github.com/Drnutsu/react-flow-creator#readme",
-  "license": "ISC",
+  "license": "MIT",
   "main": "dist/index.js",
-  "module": "dist/index.modern.js",
+  "module": "dist/index.js",
   "source": "src/index.tsx",
   "types": "dist/index.d.ts",
   "directories": {
@@ -14,15 +14,9 @@
     "test": "__tests__"
   },
   "files": [
-    "/dist"
+    "dist"
   ],
-  "publishConfig": {
-    "registry": "https://registry.npmjs.com/"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Drnutsu/react-flow-creator.git"
-  },
+  "repository": "drnutsu/react-flow-core",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc --skipLibCheck"

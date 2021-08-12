@@ -2,8 +2,10 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { ExampleComponent, AntdButton } from 'ui-components';
+import { sayHello } from 'react-flow-core'
 
 function App() {
+  console.log("#log -> sayHello", sayHello)
   return (
     <div className="App">
       <header className="App-header">
