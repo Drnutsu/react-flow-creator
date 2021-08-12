@@ -1,25 +1,52 @@
-import React from 'react'
-import { Form as AntdForm, Input as AntdInput } from 'antd'
+import React, { useCallback } from 'react'
+import { Form as AntdForm } from 'antd'
+
+import FormGenerator from './form-generator'
+
+const { useForm } = AntdForm
+
+const configs = [
+  {
+    type: 'input',
+    name: 'simple_text_input',
+    label: 'Simple Text Input',
+    placeholder: 'just simple text input type here.'
+  },
+  {
+    type: 'select',
+    name: 'required_selector',
+    label: 'Choose to require or not',
+    placeholder: 'select should we require or not',
+    showSearch: true,
+    options: [
+      { value: true, text: 'required' },
+      { value: false, text: 'not required' }
+    ]
+  }
+]
 
 export default function FormBase() {
+  const form = useForm()
+  const onSubmit = useCallback((result) => {
+    console.log(result)
+  }, [])
+  const onFailed = useCallback((err) => {
+    console.log(err)
+  }, [])
+  const Form = useCallback(
+    () => (
+      <FormGenerator
+        formItems={configs}
+        form={form}
+        onSubmit={onSubmit}
+        onFailed={onFailed}
+      />
+    ),
+    [onSubmit, form]
+  )
   return (
-    <div className='flex p-12 bg-blue-500'>
-      <AntdForm
-        name='basic'
-        labelCol={{ span: 8 }}
-        wrapperCol={{ span: 16 }}
-        initialValues={{ remember: true }}
-        onFinish={() => {}}
-        onFinishFailed={() => {}}
-      >
-        <AntdForm.Item
-          label='Username'
-          name='username'
-          rules={[{ required: true, message: 'Please input your username!' }]}
-        >
-          <AntdInput />
-        </AntdForm.Item>
-      </AntdForm>
+    <div className='max-w-md py-4 px-8 bg-white shadow-lg rounded-lg'>
+      <Form />
     </div>
   )
 }

@@ -46,7 +46,7 @@ function App() {
   console.log('#log -> sayHello', sayHello)
   return (
     <Provider store={store}>
-      <div className='flex p-12 bg-red-500'>
+      <div className='flex p-12 justify-center'>
         <FormBase />
       </div>
     </Provider>
