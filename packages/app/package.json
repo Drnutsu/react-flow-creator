@@ -22,9 +22,9 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -46,9 +46,13 @@
     ]
   },
   "devDependencies": {
+    "@craco/craco": "^6.2.0",
     "@types/react-redux": "^7.1.18",
     "@types/redux-logger": "^3.0.9",
     "@types/redux-saga": "^0.10.5",
-    "redux-logger": "^3.0.6"
+    "autoprefixer": "^9",
+    "postcss": "^7",
+    "redux-logger": "^3.0.6",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat"
   }
 }

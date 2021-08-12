@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react'
 import { Provider, useDispatch, useSelector } from 'react-redux'
-import { ExampleComponent, AntdButton } from 'ui-components'
+import { FormBase } from 'ui-components'
 import { sayHello } from 'react-flow-core'
 
 import './App.css'
+import './styles/tailwind.css'
 import logo from './logo.svg'
 import store from './store'
 
@@ -45,24 +46,8 @@ function App() {
   console.log('#log -> sayHello', sayHello)
   return (
     <Provider store={store}>
-      <div className='App'>
-        <header className='App-header'>
-          <img src={logo} className='App-logo' alt='logo' />
-          <p>
-            Edit <code>src/App.tsx</code> and save to reload.
-          </p>
-          <a
-            className='App-link'
-            href='https://reactjs.org'
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            Learn React
-          </a>
-          <ExampleComponent text='test' />
-          <AntdButton />
-          <Example />
-        </header>
+      <div className='flex p-12 bg-red-500'>
+        <FormBase />
       </div>
     </Provider>
   )
