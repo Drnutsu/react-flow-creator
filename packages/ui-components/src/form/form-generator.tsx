@@ -25,7 +25,7 @@ export default function FormGenerator({
           <Select {...item}>
             {item.options &&
               item.options.map(({ value, text }) => (
-                <Select.Option key={value} value={value}>
+                <Select.Option className='text-black' key={value} value={value}>
                   {text}
                 </Select.Option>
               ))}

@@ -1,54 +1,45 @@
-import React, { useEffect } from 'react'
-import { Provider, useDispatch, useSelector } from 'react-redux'
-import { FormBase } from 'ui-components'
-import { sayHello } from 'react-flow-core'
+import React, { useCallback } from 'react'
+import { Provider, useDispatch } from 'react-redux'
+import { Button } from 'antd'
+
+import { FormBase, Card } from 'ui-components'
+import { form } from 'react-flow-core'
 
 import './App.css'
 import './styles/tailwind.css'
-import logo from './logo.svg'
 import store from './store'
-
-import {
-  getPendingSelector,
-  getTodosSelector,
-  getErrorSelector
-} from './store/todo/selectors'
-import { fetchTodoRequest } from './store/todo/actions'
 
 function Example() {
   const dispatch = useDispatch()
-  const pending = useSelector(getPendingSelector)
-  const todos = useSelector(getTodosSelector)
-  const error = useSelector(getErrorSelector)
-
-  useEffect(() => {
-    dispatch(fetchTodoRequest())
-  }, [])
-
+  const onChangeLayout = useCallback(() => {
+    dispatch(
+      form.actions.updateFormUI([
+        {
+          type: 'input',
+          name: 'simple_text_input',
+          label: 'Simple Text Input',
+          placeholder: 'just simple text input type here.'
+        }
+      ])
+    )
+  }, [form])
   return (
-    <div style={{ padding: '15px' }}>
-      {pending ? (
-        <div>Loading...</div>
-      ) : error ? (
-        <div>Error</div>
-      ) : (
-        todos.map((todo, index) => (
-          <div style={{ marginBottom: '10px' }} key={todo.id}>
-            {++index}. {todo.title}
-          </div>
-        ))
-      )}
+    <div className='flex p-12 justify-center items-center gap-4 flex-col'>
+      <Card className='w-full'>
+        <div className='flex flex-col gap-2 items-center'>
+          <span className='text-xl text-bold'>Form Controller</span>
+          <Button onClick={onChangeLayout}>Change!</Button>
+        </div>
+      </Card>
+      <FormBase />
     </div>
   )
 }
 
 function App() {
-  console.log('#log -> sayHello', sayHello)
   return (
     <Provider store={store}>
-      <div className='flex p-12 justify-center'>
-        <FormBase />
-      </div>
+      <Example />
     </Provider>
   )
 }

@@ -4,6 +4,8 @@ var React = require('react');
 var React__default = _interopDefault(React);
 require('antd/dist/antd.css');
 var antd = require('antd');
+var reactRedux = require('react-redux');
+var cx = _interopDefault(require('classnames'));
 
 var styles = {"test":"_styles-module__test__3ybTi"};
 
@@ -55,6 +57,7 @@ function FormGenerator(_ref) {
           var value = _ref2.value,
               text = _ref2.text;
           return React__default.createElement(antd.Select.Option, {
+            className: 'text-black',
             key: value,
             value: value
           }, text);
@@ -129,25 +132,6 @@ function FormGenerator(_ref) {
 }
 
 var useForm = antd.Form.useForm;
-var configs = [{
-  type: 'input',
-  name: 'simple_text_input',
-  label: 'Simple Text Input',
-  placeholder: 'just simple text input type here.'
-}, {
-  type: 'select',
-  name: 'required_selector',
-  label: 'Choose to require or not',
-  placeholder: 'select should we require or not',
-  showSearch: true,
-  options: [{
-    value: true,
-    text: 'required'
-  }, {
-    value: false,
-    text: 'not required'
-  }]
-}];
 function FormBase() {
   var form = useForm();
   var onSubmit = React.useCallback(function (result) {
@@ -156,17 +140,30 @@ function FormBase() {
   var onFailed = React.useCallback(function (err) {
     console.log(err);
   }, []);
+  var configs = reactRedux.useSelector(function (state) {
+    var _state$form, _state$form$form;
+
+    return state === null || state === void 0 ? void 0 : (_state$form = state.form) === null || _state$form === void 0 ? void 0 : (_state$form$form = _state$form.form) === null || _state$form$form === void 0 ? void 0 : _state$form$form.config;
+  });
   var Form = React.useCallback(function () {
     return React__default.createElement(FormGenerator, {
-      formItems: configs,
+      formItems: configs || [],
       form: form,
       onSubmit: onSubmit,
       onFailed: onFailed
     });
-  }, [onSubmit, form]);
+  }, [onSubmit, configs, form]);
   return React__default.createElement("div", {
     className: 'max-w-md py-4 px-8 bg-white shadow-lg rounded-lg'
   }, React__default.createElement(Form, null));
+}
+
+function Card(_ref) {
+  var children = _ref.children,
+      className = _ref.className;
+  return React__default.createElement("div", {
+    className: cx('max-w-md py-4 px-8 bg-white shadow-lg rounded-lg', className)
+  }, children);
 }
 
 var ExampleComponent = function ExampleComponent(_ref) {
@@ -180,6 +177,7 @@ var AntdButton = function AntdButton() {
 };
 
 exports.AntdButton = AntdButton;
+exports.Card = Card;
 exports.ExampleComponent = ExampleComponent;
 exports.FormBase = FormBase;
 //# sourceMappingURL=index.js.map

@@ -6,6 +6,7 @@ import { Button } from 'antd'
 
 // Form
 import FormBase from './form'
+import Card from './card'
 
 interface Props {
   text: string
@@ -19,4 +20,4 @@ export const AntdButton = () => {
   return <Button>CONFIRM!!</Button>
 }
 
-export { FormBase }
+export { FormBase, Card }
