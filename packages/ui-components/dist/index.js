@@ -9,6 +9,15 @@ var cx = _interopDefault(require('classnames'));
 
 var styles = {"test":"_styles-module__test__3ybTi"};
 
+var SUBMIT_FORM_UI = 'SUBMIT_FORM_UI';
+
+var submitForm = function submitForm(payload) {
+  return {
+    type: SUBMIT_FORM_UI,
+    payload: payload
+  };
+};
+
 function _objectWithoutPropertiesLoose(source, excluded) {
   if (source == null) return {};
   var target = {};
@@ -134,17 +143,21 @@ function FormGenerator(_ref) {
 var useForm = antd.Form.useForm;
 function FormBase() {
   var form = useForm();
+  var dispatch = reactRedux.useDispatch();
   var onSubmit = React.useCallback(function (result) {
-    console.log(result);
+    console.log(' submit form ui : ', result);
+    dispatch(submitForm(result));
   }, []);
   var onFailed = React.useCallback(function (err) {
     console.log(err);
   }, []);
   var configs = reactRedux.useSelector(function (state) {
-    var _state$form, _state$form$form;
+    var _state$form;
 
-    return state === null || state === void 0 ? void 0 : (_state$form = state.form) === null || _state$form === void 0 ? void 0 : (_state$form$form = _state$form.form) === null || _state$form$form === void 0 ? void 0 : _state$form$form.config;
+    console.log(' state : ', state);
+    return state === null || state === void 0 ? void 0 : (_state$form = state.form) === null || _state$form === void 0 ? void 0 : _state$form.config;
   });
+  console.log(' configs at FormBase : ', configs);
   var Form = React.useCallback(function () {
     return React__default.createElement(FormGenerator, {
       formItems: configs || [],

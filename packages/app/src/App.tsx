@@ -9,19 +9,12 @@ import './App.css'
 import './styles/tailwind.css'
 import store from './store'
 
+import { startExampleFlow } from './store/flow-saga/example/flowActions'
+
 function Example() {
   const dispatch = useDispatch()
   const onChangeLayout = useCallback(() => {
-    dispatch(
-      form.actions.updateFormUI([
-        {
-          type: 'input',
-          name: 'simple_text_input',
-          label: 'Simple Text Input',
-          placeholder: 'just simple text input type here.'
-        }
-      ])
-    )
+    dispatch(startExampleFlow('test'))
   }, [form])
   return (
     <div className='flex p-12 justify-center items-center gap-4 flex-col'>

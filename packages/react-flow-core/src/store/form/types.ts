@@ -1,4 +1,4 @@
-import { UPDATE_FORM_UI } from './actionTypes'
+import { UPDATE_FORM_UI, SUBMIT_FORM_UI } from './actionTypes'
 
 export interface FormState {
   // TODO: change to form schema
@@ -13,6 +13,12 @@ export interface UpdateFormPayload {
 
 export interface UpdateFormRequest {
   type: typeof UPDATE_FORM_UI
+  // add array of form creation here.
+  payload: any
+}
+
+export interface SubmitFormRequest {
+  type: typeof SUBMIT_FORM_UI
   // add array of form creation here.
   payload: any
 }

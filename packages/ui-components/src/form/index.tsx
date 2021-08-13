@@ -1,7 +1,8 @@
 import React, { useCallback } from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { Form as AntdForm } from 'antd'
 
+import { form as formCore } from 'react-flow-core'
 import FormGenerator from './form-generator'
 
 const { useForm } = AntdForm
@@ -28,13 +29,19 @@ const { useForm } = AntdForm
 
 export default function FormBase() {
   const form = useForm()
+  const dispatch = useDispatch()
   const onSubmit = useCallback((result) => {
-    console.log(result)
+    console.log(' submit form ui : ', result)
+    dispatch(formCore.actions.submitForm(result))
   }, [])
   const onFailed = useCallback((err) => {
     console.log(err)
   }, [])
-  const configs = useSelector((state: any) => state?.form?.form?.config)
+  const configs = useSelector((state: any) => {
+    console.log(' state : ', state)
+    return state?.form?.config
+  })
+  console.log(' configs at FormBase : ', configs)
   const Form = useCallback(
     () => (
       <FormGenerator

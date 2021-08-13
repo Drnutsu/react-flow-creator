@@ -1,10 +1,17 @@
 import React__default, { useCallback, createElement } from 'react';
 import 'antd/dist/antd.css';
 import { Form, Button, DatePicker, Select, Input, InputNumber } from 'antd';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import cx from 'classnames';
 
 var styles = {"test":"_styles-module__test__3ybTi"};
+
+const SUBMIT_FORM_UI = 'SUBMIT_FORM_UI';
+
+const submitForm = payload => ({
+  type: SUBMIT_FORM_UI,
+  payload
+});
 
 function FormGenerator({
   form,
@@ -110,17 +117,21 @@ const {
 } = Form;
 function FormBase() {
   const form = useForm();
+  const dispatch = useDispatch();
   const onSubmit = useCallback(result => {
-    console.log(result);
+    console.log(' submit form ui : ', result);
+    dispatch(submitForm(result));
   }, []);
   const onFailed = useCallback(err => {
     console.log(err);
   }, []);
   const configs = useSelector(state => {
-    var _state$form, _state$form$form;
+    var _state$form;
 
-    return state === null || state === void 0 ? void 0 : (_state$form = state.form) === null || _state$form === void 0 ? void 0 : (_state$form$form = _state$form.form) === null || _state$form$form === void 0 ? void 0 : _state$form$form.config;
+    console.log(' state : ', state);
+    return state === null || state === void 0 ? void 0 : (_state$form = state.form) === null || _state$form === void 0 ? void 0 : _state$form.config;
   });
+  console.log(' configs at FormBase : ', configs);
   const Form = useCallback(() => React__default.createElement(FormGenerator, {
     formItems: configs || [],
     form: form,
