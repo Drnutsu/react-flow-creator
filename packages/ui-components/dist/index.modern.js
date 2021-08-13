@@ -136,7 +136,8 @@ function FormBase() {
     formItems: configs || [],
     form: form,
     onSubmit: onSubmit,
-    onFailed: onFailed
+    onFailed: onFailed,
+    submitText: 'Next'
   }), [onSubmit, configs, form]);
   return React__default.createElement("div", {
     className: 'max-w-md py-4 px-8 bg-white shadow-lg rounded-lg'

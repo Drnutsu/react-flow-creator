@@ -19,7 +19,7 @@ function* startExampleFlowSaga(action: any) {
   const { payload: firstPayload } = yield take(form.actionsTypes.SUBMIT_FORM_UI)
   console.log(' take first payload from submit : ', firstPayload)
 
-  // create form
+  // create the second form
   yield put(
     form.actions.updateFormUI([
       {
@@ -31,7 +31,7 @@ function* startExampleFlowSaga(action: any) {
     ])
   )
 
-  // waiting for submit from the form
+  // waiting for submit from the second form
   const { payload: secondPayload } = yield take(
     form.actionsTypes.SUBMIT_FORM_UI
   )

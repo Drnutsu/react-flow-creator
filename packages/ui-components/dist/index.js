@@ -163,7 +163,8 @@ function FormBase() {
       formItems: configs || [],
       form: form,
       onSubmit: onSubmit,
-      onFailed: onFailed
+      onFailed: onFailed,
+      submitText: 'Next'
     });
   }, [onSubmit, configs, form]);
   return React__default.createElement("div", {

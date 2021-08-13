@@ -21,7 +21,7 @@ function Example() {
       <Card className='w-full'>
         <div className='flex flex-col gap-2 items-center'>
           <span className='text-xl text-bold'>Form Controller</span>
-          <Button onClick={onChangeLayout}>Change!</Button>
+          <Button onClick={onChangeLayout}>Start!</Button>
         </div>
       </Card>
       <FormBase />

@@ -49,6 +49,7 @@ export default function FormBase() {
         form={form}
         onSubmit={onSubmit}
         onFailed={onFailed}
+        submitText='Next'
       />
     ),
     [onSubmit, configs, form]
